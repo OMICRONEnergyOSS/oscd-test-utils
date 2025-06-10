@@ -1,6 +1,6 @@
 {
   "name": "@omicronenergy/oscd-testing",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "OpenSCD Test support library for IEC 61850",
   "type": "module",
   "main": "./index.js",
@@ -47,6 +47,7 @@
     "rimraf": "^3.0.2",
     "typedoc": "^0.28.5",
     "fast-check": "^3.22.0",
+    "sinon": "^20.0.0",
     "typescript": "^5.8.3"
   }
 }
