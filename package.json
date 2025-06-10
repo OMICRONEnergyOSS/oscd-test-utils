@@ -1,6 +1,6 @@
 {
   "name": "@omicronenergy/oscd-testing",
-  "version": "0.0.3",
+  "version": "0.0.2",
   "description": "OpenSCD Test support library for IEC 61850",
   "type": "module",
   "main": "./index.js",
