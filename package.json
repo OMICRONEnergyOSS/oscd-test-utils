@@ -47,6 +47,7 @@
     "rimraf": "^3.0.2",
     "typedoc": "^0.28.5",
     "fast-check": "^3.22.0",
+    "sinon": "^20.0.0",
     "typescript": "^5.8.3"
   }
 }
