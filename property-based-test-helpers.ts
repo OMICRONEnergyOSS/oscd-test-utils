@@ -21,7 +21,7 @@ import {
   SetTextContent,
 } from '@omicronenergy/oscd-api';
 
-import { sclDocString } from './oscd-test-utils.js';
+import { sclDocString } from './scl-test-docs.js';
 
 export const xmlAttributeName =
   /^(?!xml|Xml|xMl|xmL|XMl|xML|XmL|XML)[A-Za-z_][A-Za-z0-9-_.]*(:[A-Za-z_][A-Za-z0-9-_.]*)?$/;
