@@ -11,7 +11,7 @@ import {
   string as stringArbitrary,
   tuple,
   webUrl,
-} from "fast-check";
+} from 'fast-check';
 
 import {
   EditV2,
@@ -19,21 +19,19 @@ import {
   Remove,
   SetAttributes,
   SetTextContent,
-} from "./temp-please-remove-me__editv2.js";
+} from '@omicronenergy/oscd-api';
+
+import { sclDocString } from './oscd-test-utils.js';
 
 export const xmlAttributeName =
   /^(?!xml|Xml|xMl|xmL|XMl|xML|XmL|XML)[A-Za-z_][A-Za-z0-9-_.]*(:[A-Za-z_][A-Za-z0-9-_.]*)?$/;
 
 export function descendants(parent: Element | XMLDocument): Node[] {
   return (Array.from(parent.childNodes) as Node[]).concat(
-    ...Array.from(parent.children).map((child) => descendants(child))
+    ...Array.from(parent.children).map(child => descendants(child)),
   );
 }
 
-export const sclDocString = `<?xml version="1.0" encoding="UTF-8"?>
-    <SCL version="2007" revision="B" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:ens1="http://example.org/somePreexistingExtensionNamespace">
-    <Substation name="A1" desc="test substation"></Substation>
-  </SCL>`;
 const testDocStrings = [
   sclDocString,
   `<?xml version="1.0" encoding="UTF-8"?>
@@ -61,13 +59,13 @@ const testDocStrings = [
 export type TestDoc = { doc: XMLDocument; nodes: Node[] };
 export const testDocs = tuple(
   constantFrom(...testDocStrings),
-  constantFrom(...testDocStrings)
+  constantFrom(...testDocStrings),
 )
-  .map((strs) =>
-    strs.map((str) => new DOMParser().parseFromString(str, "application/xml"))
+  .map(strs =>
+    strs.map(str => new DOMParser().parseFromString(str, 'application/xml')),
   )
-  .map((docs) =>
-    docs.map((doc) => ({ doc, nodes: descendants(doc).concat([doc]) }))
+  .map(docs =>
+    docs.map(doc => ({ doc, nodes: descendants(doc).concat([doc]) })),
   ) as Arbitrary<[TestDoc, TestDoc]>;
 
 export function remove(nodes: Node[]): Arbitrary<Remove> {
@@ -85,7 +83,7 @@ export function insert(nodes: Node[]): Arbitrary<Insert> {
 
 export function setTextContent(nodes: Node[]): Arbitrary<SetTextContent> {
   const element = <Arbitrary<Element>>(
-    constantFrom(...nodes.filter((nd) => nd.nodeType === Node.ELEMENT_NODE))
+    constantFrom(...nodes.filter(nd => nd.nodeType === Node.ELEMENT_NODE))
   );
   const textContent = stringArbitrary();
 
@@ -94,11 +92,11 @@ export function setTextContent(nodes: Node[]): Arbitrary<SetTextContent> {
 
 export function setAttributes(nodes: Node[]): Arbitrary<SetAttributes> {
   const element = <Arbitrary<Element>>(
-    constantFrom(...nodes.filter((nd) => nd.nodeType === Node.ELEMENT_NODE))
+    constantFrom(...nodes.filter(nd => nd.nodeType === Node.ELEMENT_NODE))
   );
   const attributes = dictionary(
     stringArbitrary(),
-    oneof(stringArbitrary(), constant(null))
+    oneof(stringArbitrary(), constant(null)),
   );
   // object() instead of nested dictionary() necessary for performance reasons
   const attributesNS = objectArbitrary({
@@ -109,19 +107,19 @@ export function setAttributes(nodes: Node[]): Arbitrary<SetAttributes> {
   return record({ element, attributes, attributesNS });
 }
 
-export function complexEdit(nodes: Node[]): Arbitrary<EditV2[]> {
-  return array(simpleEdit(nodes));
-}
-
 export function simpleEdit(
-  nodes: Node[]
+  nodes: Node[],
 ): Arbitrary<Insert | SetAttributes | Remove | SetTextContent> {
   return oneof(
     remove(nodes),
     insert(nodes),
     setAttributes(nodes),
-    setTextContent(nodes)
+    setTextContent(nodes),
   );
+}
+
+export function complexEdit(nodes: Node[]): Arbitrary<EditV2[]> {
+  return array(simpleEdit(nodes));
 }
 
 export function edit(nodes: Node[]): Arbitrary<EditV2> {
@@ -138,7 +136,7 @@ export type UndoRedoTestCase = {
 
 export function undoRedoTestCases(
   testDoc1: TestDoc,
-  testDoc2: TestDoc
+  testDoc2: TestDoc,
 ): Arbitrary<UndoRedoTestCase> {
   const nodes = testDoc1.nodes.concat(testDoc2.nodes);
   return record({
@@ -170,7 +168,7 @@ export function isValidInsert({ parent, node, reference }: Insert) {
     isParentOf(parent, reference) &&
     !node.contains(parent) &&
     ![Node.DOCUMENT_NODE, Node.DOCUMENT_TYPE_NODE].some(
-      (nodeType) => node.nodeType === nodeType
+      nodeType => node.nodeType === nodeType,
     ) &&
     !(
       parent instanceof Document &&

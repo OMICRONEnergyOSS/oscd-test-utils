@@ -1,31 +1,31 @@
-import { waitUntil } from "@open-wc/testing";
+import { waitUntil } from '@open-wc/testing';
 
 export function getFirstTextNodeContent(
-  element: Element | null
+  element: Element | null,
 ): string | undefined {
   if (!element) {
-    return "";
+    return '';
   }
   return Array.from(element.childNodes)
-    .filter((node) => node.nodeType === Node.TEXT_NODE)
-    .map((node) => node.textContent?.trim())
-    .filter((node) => node !== "")[0];
+    .filter(node => node.nodeType === Node.TEXT_NODE)
+    .map(node => node.textContent?.trim())
+    .filter(node => node !== '')[0];
 }
 
 export function querySelectorContainingText(
   scope: Element,
   selector: string,
-  text: string
+  text: string,
 ) {
   const elements = Array.from(scope.querySelectorAll(selector));
-  return elements.find((e) => {
+  return elements.find(e => {
     const textContent = getFirstTextNodeContent(e);
     return textContent === text;
   });
 }
 
 export function simulateKeypressOnElement(key: string, ctrlKey: boolean) {
-  const event = new KeyboardEvent("keydown", {
+  const event = new KeyboardEvent('keydown', {
     key,
     ctrlKey,
   });
@@ -34,13 +34,13 @@ export function simulateKeypressOnElement(key: string, ctrlKey: boolean) {
 
 export async function waitForDialogState(
   dialog: Element,
-  state: "open" | "closed"
+  state: 'open' | 'closed',
 ) {
   await waitUntil(() => {
     const maybeDialogWithOpen = dialog as { open?: boolean };
-    return typeof maybeDialogWithOpen.open !== "undefined"
-      ? !!maybeDialogWithOpen.open === (state === "open")
-      : state === "closed";
+    return typeof maybeDialogWithOpen.open !== 'undefined'
+      ? !!maybeDialogWithOpen.open === (state === 'open')
+      : state === 'closed';
   }, `Dialog did not ${state} within the expected time`);
   return dialog;
 }
@@ -55,11 +55,11 @@ export async function waitForDialogState(
 export function findButtonByIcon(
   root: ParentNode,
   buttonSelector: string,
-  iconName: string
+  iconName: string,
 ): HTMLElement | null {
   const buttons = Array.from(root.querySelectorAll(buttonSelector));
-  return buttons.find((btn) => {
-    const icon = btn.querySelector("oscd-icon");
+  return buttons.find(btn => {
+    const icon = btn.querySelector('oscd-icon');
     return icon && icon.textContent?.trim() === iconName;
   }) as HTMLElement | null;
 }

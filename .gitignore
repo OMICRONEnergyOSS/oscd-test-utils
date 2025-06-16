@@ -1,7 +1,5 @@
+# Node.js dependencies
 node_modules
-*.js
-*.map
-*.d.ts
 *.tsbuildinfo
 
 ## editors
