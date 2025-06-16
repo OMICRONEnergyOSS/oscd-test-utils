@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.3](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.2...oscd-test-utils-v0.0.3) (2025-06-16)
+
+
+### Bug Fixes
+
+* correct main & types in package.json to point to dist ([8ec6910](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/8ec6910ce52c684cffd3a54447db326dfff9f188))
+
 ## [0.0.2](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.1...oscd-test-utils-v0.0.2) (2025-06-16)
 
 
