@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.3...oscd-test-utils-v0.0.4) (2025-06-16)
+
+
+### Bug Fixes
+
+* broken import ([2a9a35b](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/2a9a35b833945dab6f48b21d5a3a3c5b6af0c1a0))
+
 ## [0.0.3](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.2...oscd-test-utils-v0.0.3) (2025-06-16)
 
 
