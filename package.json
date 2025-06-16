@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "description": "OpenSCD Test support library for IEC 61850",
   "type": "module",
-  "main": "./oscd-test-utils.js",
-  "types": "./oscd-test-utils.d.ts",
+  "main": "./dist/oscd-test-utils.js",
+  "types": "./dist/oscd-test-utils.d.ts",
   "files": [
     "/dist/"
   ],
