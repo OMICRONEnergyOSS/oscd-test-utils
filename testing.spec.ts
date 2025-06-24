@@ -9,8 +9,6 @@ import {
   waitForDialogState,
 } from './testing.js';
 
-mocha.setup('bdd');
-
 describe('querySelectorContainingText', () => {
   it('returns the element matching selector and exact text', async () => {
     const el = await fixture<HTMLDivElement>(html`
@@ -22,7 +20,7 @@ describe('querySelectorContainingText', () => {
     `);
 
     const result = querySelectorContainingText(el, '.item', 'Banana');
-    expect(result).to.exist;
+    expect(result).to.not.be.undefined;
     expect(result?.textContent?.trim()).to.equal('Banana');
   });
 

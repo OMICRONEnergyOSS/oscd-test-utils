@@ -18,7 +18,7 @@ export function querySelectorContainingText(
   text: string,
 ) {
   const elements = Array.from(scope.querySelectorAll(selector));
-  return elements.find(e => {
+  return elements.find((e) => {
     const textContent = getFirstTextNodeContent(e);
     return textContent === text;
   });
@@ -58,7 +58,7 @@ export function findButtonByIcon(
   iconName: string,
 ): HTMLElement | null {
   const buttons = Array.from(root.querySelectorAll(buttonSelector));
-  return buttons.find(btn => {
+  return buttons.find((btn) => {
     const icon = btn.querySelector('oscd-icon');
     return icon && icon.textContent?.trim() === iconName;
   }) as HTMLElement | null;
