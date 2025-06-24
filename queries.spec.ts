@@ -1,13 +1,10 @@
 import { expect, fixture, html } from '@open-wc/testing';
-import sinon from 'sinon';
 
 import {
-  findButtonByIcon,
+  queryButtonByIcon,
   getFirstTextNodeContent,
   querySelectorContainingText,
-  simulateKeypressOnElement,
-  waitForDialogState,
-} from './testing.js';
+} from './queries.js';
 
 describe('querySelectorContainingText', () => {
   it('returns the element matching selector and exact text', async () => {
@@ -101,57 +98,6 @@ describe('getFirstTextNodeContent', () => {
   });
 });
 
-describe('simulateKeypressOnElement', () => {
-  it('dispatches a keydown event with the correct key and ctrlKey', () => {
-    const spy = sinon.spy();
-    document.addEventListener('keydown', spy, { once: true });
-    simulateKeypressOnElement('a', true);
-    expect(spy.calledOnce).to.be.true;
-    const event = spy.firstCall.args[0];
-    expect(event).to.have.property('key', 'a');
-    expect(event).to.have.property('ctrlKey', true);
-  });
-});
-
-describe('waitForDialogState', () => {
-  it('resolves immediately if dialog is already open', async () => {
-    const dialog = document.createElement('dialog');
-    dialog.setAttribute('open', '');
-    let resolved = false;
-    await waitForDialogState(dialog, 'open').then(() => {
-      resolved = true;
-    });
-    expect(resolved).to.be.true;
-  });
-
-  it('waits for dialog to become open', async () => {
-    const dialog = document.createElement('dialog');
-    setTimeout(() => dialog.setAttribute('open', ''), 10);
-    await waitForDialogState(dialog, 'open');
-    expect(dialog.hasAttribute('open')).to.be.true;
-  });
-
-  it('resolves immediately if dialog is already closed', async () => {
-    const dialog = document.createElement('dialog');
-    let resolved = false;
-    await waitForDialogState(dialog, 'closed').then(() => {
-      resolved = true;
-    });
-    expect(resolved).to.be.true;
-  });
-
-  it('waits for dialog to emit closed event', async () => {
-    const dialog = document.createElement('dialog');
-    dialog.setAttribute('open', '');
-    setTimeout(() => {
-      dialog.removeAttribute('open');
-      dialog.dispatchEvent(new Event('closed'));
-    }, 10);
-    await waitForDialogState(dialog, 'closed');
-    expect(dialog.hasAttribute('open')).to.be.false;
-  });
-});
-
 describe('findButtonByIcon', () => {
   it('returns the button with the matching icon name', () => {
     const root = document.createElement('div');
@@ -170,7 +116,7 @@ describe('findButtonByIcon', () => {
     root.appendChild(btn1);
     root.appendChild(btn2);
 
-    const found = findButtonByIcon(root, '.icon-btn', 'bar');
+    const found = queryButtonByIcon(root, '.icon-btn', 'bar');
     expect(found).to.equal(btn2);
   });
 
@@ -182,7 +128,7 @@ describe('findButtonByIcon', () => {
     btn.appendChild(icon);
     root.appendChild(btn);
 
-    const found = findButtonByIcon(root, 'oscd-icon-button', 'bar');
+    const found = queryButtonByIcon(root, 'oscd-icon-button', 'bar');
     expect(found).to.be.undefined;
   });
 
@@ -193,7 +139,7 @@ describe('findButtonByIcon', () => {
     icon.textContent = 'foo';
     root.appendChild(btn);
 
-    const found = findButtonByIcon(root, 'oscd-icon-button', 'foo');
+    const found = queryButtonByIcon(root, 'oscd-icon-button', 'foo');
     expect(found).to.be.undefined;
   });
 
@@ -204,7 +150,7 @@ describe('findButtonByIcon', () => {
     icon.textContent = 'foo';
     root.appendChild(btn);
 
-    const found = findButtonByIcon(root, 'oscd-text-button', 'foo');
+    const found = queryButtonByIcon(root, 'oscd-text-button', 'foo');
     expect(found).to.be.undefined;
   });
 });

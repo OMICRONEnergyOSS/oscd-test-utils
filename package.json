@@ -3,18 +3,39 @@
   "version": "0.0.4",
   "description": "OpenSCD Test support library for IEC 61850",
   "type": "module",
-  "main": "./dist/oscd-test-utils.js",
-  "types": "./dist/oscd-test-utils.d.ts",
+  "exports": {
+    "./arbitraries.js": {
+      "default": "./dist/arbitraries.js",
+      "types": "./dist/arbitraries.d.ts"
+    },
+    "./queries.js": {
+      "default": "./dist/queries.js",
+      "types": "./dist/queries.d.ts"
+    },
+    "./waitFors.js": {
+      "default": "./dist/waitFors.js",
+      "types": "./dist/waitFors.d.ts"
+    },
+    "./utils.js": {
+      "default": "./dist/utils.js",
+      "types": "./dist/utils.d.ts"
+    },
+    "./scl-sample-docs.js": {
+      "default": "./dist/scl-sample-docs.js",
+      "types": "./dist/scl-sample-docs.d.ts"
+    }
+  },
   "files": [
-    "/dist/"
+    "/dist/",
+    "!/dist/*.spec.*"
   ],
   "scripts": {
     "lint": "eslint .",
     "format": "eslint . --fix",
-    "test": "npm run build && wtr --coverage",
+    "test": "npm run build && wtr --coverage --verbose",
     "test:watch": "npm run build && concurrently -k -r \"tsc -b --watch --preserveWatchOutput\" \"wtr --watch --coverage\"",
     "build": "npx rimraf dist && tsc --pretty",
-    "doc": "npx rimraf doc && typedoc --out doc oscd-test-utils.ts",
+    "doc": "npx rimraf doc && typedoc --out doc arbitraries.ts queries.ts waitFors.ts utils.ts scl-sample-docs.ts",
     "prepare": "husky"
   },
   "repository": {
@@ -48,6 +69,7 @@
     "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.1",
     "@web/test-runner": "0.20.2",
+    "@web/test-runner-playwright": "^0.11.1",
     "concurrently": "^9.2.0",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
