@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.6](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.5...oscd-test-utils-v0.0.6) (2025-06-24)
+
+
+### Bug Fixes
+
+* bump oscd-api and update arbitraries accordingly ([b270e72](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/b270e72ce7cd1e252abcb48550274751af508cd8))
+
 ## [0.0.5](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.4...oscd-test-utils-v0.0.5) (2025-06-24)
 
 
