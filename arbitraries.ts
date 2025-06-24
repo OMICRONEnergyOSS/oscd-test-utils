@@ -5,10 +5,10 @@ import {
   constant,
   constantFrom,
   dictionary,
-  object as objectArbitrary,
   oneof,
   record,
   string as stringArbitrary,
+  stringMatching,
   tuple,
   webUrl,
 } from 'fast-check';
@@ -21,10 +21,15 @@ import {
   SetTextContent,
 } from '@omicronenergy/oscd-api';
 
+import { isInsert } from '@omicronenergy/oscd-api/utils.js';
+
 import { sclDocString } from './scl-sample-docs.js';
 
-export const xmlAttributeName =
-  /^(?!xml|Xml|xMl|xmL|XMl|xML|XmL|XML)[A-Za-z_][A-Za-z0-9-_.]*(:[A-Za-z_][A-Za-z0-9-_.]*)?$/;
+export const xmlAttributeName = /^[A-Za-z_][A-Za-z0-9-_.]*$/;
+export const xmlNamespacePrefix = /^[A-Za-z_][A-Za-z0-9-_.]*$/;
+export function xmlPrefixedAttributeName(prefix: string) {
+  return new RegExp('^' + prefix + ':[A-Za-z_][A-Za-z0-9-_.]*$');
+}
 
 export function descendants(parent: Element | XMLDocument): Node[] {
   return (Array.from(parent.childNodes) as Node[]).concat(
@@ -95,16 +100,29 @@ export function setAttributes(nodes: Node[]): Arbitrary<SetAttributes> {
     constantFrom(...nodes.filter(nd => nd.nodeType === Node.ELEMENT_NODE))
   );
   const attributes = dictionary(
-    stringArbitrary(),
+    stringMatching(xmlAttributeName),
     oneof(stringArbitrary(), constant(null)),
   );
   // object() instead of nested dictionary() necessary for performance reasons
-  const attributesNS = objectArbitrary({
-    key: webUrl(),
-    values: [attributes],
-    maxDepth: 0,
+  const attributesNS = array(webUrl()).chain((urls) => {
+    let prefixIndex = 0;
+    return record(
+      Object.fromEntries(
+        urls.map(url => [
+          url,
+          dictionary(
+            stringMatching(xmlPrefixedAttributeName(`ens${prefixIndex++}`)),
+            oneof(stringArbitrary(), constant(null)),
+          ),
+        ]),
+      ),
+    );
   }) as Arbitrary<Record<string, Record<string, string | null>>>;
   return record({ element, attributes, attributesNS });
+}
+
+export function complexEdit(nodes: Node[]): Arbitrary<EditV2[]> {
+  return array(simpleEdit(nodes));
 }
 
 export function simpleEdit(
@@ -116,10 +134,6 @@ export function simpleEdit(
     setAttributes(nodes),
     setTextContent(nodes),
   );
-}
-
-export function complexEdit(nodes: Node[]): Arbitrary<EditV2[]> {
-  return array(simpleEdit(nodes));
 }
 
 export function edit(nodes: Node[]): Arbitrary<EditV2> {
@@ -164,6 +178,7 @@ export function isParentOf(parent: Node, node: Node | null) {
 
 export function isValidInsert({ parent, node, reference }: Insert) {
   return (
+    isInsert({ parent, node, reference }) &&
     node !== reference &&
     isParentOf(parent, reference) &&
     !node.contains(parent) &&
