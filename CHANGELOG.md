@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.7](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.6...oscd-test-utils-v0.0.7) (2025-06-25)
+
+
+### Bug Fixes
+
+* removed @open-wc/testing duplicate + aligned tsconfig ([f33d79f](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/f33d79faed588394689e6062ad1f336902c62b7c))
+
 ## [0.0.6](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.5...oscd-test-utils-v0.0.6) (2025-06-24)
 
 
