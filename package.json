@@ -54,7 +54,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@omicronenergy/oscd-api": "^0.1.0",
-    "@open-wc/testing": "3.2.2",
+    "@open-wc/testing": "4.0.0",
     "fast-check": "^3.22.0",
     "tslib": "^2.4.0"
   },
@@ -64,7 +64,6 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.29.0",
     "@open-wc/eslint-config": "^13.0.0",
-    "@open-wc/testing": "4.0.0",
     "@types/mocha": "^10.0.10",
     "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.1",
