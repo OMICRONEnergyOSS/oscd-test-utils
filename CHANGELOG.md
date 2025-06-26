@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.8](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.7...oscd-test-utils-v0.0.8) (2025-06-26)
+
+
+### Features
+
+* move all exports to the default export & remove sample docs ([be5d1d3](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/be5d1d3dd008fb90ed1ba032ba7eec8074cd200f))
+
 ## [0.0.7](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.6...oscd-test-utils-v0.0.7) (2025-06-25)
 
 
