@@ -23,8 +23,6 @@ import {
 
 import { isInsert } from '@omicronenergy/oscd-api/utils.js';
 
-import { sclDocString } from './scl-sample-docs.js';
-
 export const xmlAttributeName = /^[A-Za-z_][A-Za-z0-9-_.]*$/;
 export const xmlNamespacePrefix = /^[A-Za-z_][A-Za-z0-9-_.]*$/;
 export function xmlPrefixedAttributeName(prefix: string) {
@@ -36,6 +34,11 @@ export function descendants(parent: Element | XMLDocument): Node[] {
     ...Array.from(parent.children).map(child => descendants(child)),
   );
 }
+
+const sclDocString = `<?xml version="1.0" encoding="UTF-8"?>
+    <SCL version="2007" revision="B" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:ens1="http://example.org/somePreexistingExtensionNamespace">
+    <Substation name="A1" desc="test substation"></Substation>
+  </SCL>`;
 
 const testDocStrings = [
   sclDocString,

@@ -4,6 +4,10 @@
   "description": "OpenSCD Test support library for IEC 61850",
   "type": "module",
   "exports": {
+    ".": {
+      "default": "./dist/oscd-test-utils.js",
+      "types": "./dist/oscd-test-utils.d.ts"
+    },
     "./arbitraries.js": {
       "default": "./dist/arbitraries.js",
       "types": "./dist/arbitraries.d.ts"
@@ -19,10 +23,6 @@
     "./utils.js": {
       "default": "./dist/utils.js",
       "types": "./dist/utils.d.ts"
-    },
-    "./scl-sample-docs.js": {
-      "default": "./dist/scl-sample-docs.js",
-      "types": "./dist/scl-sample-docs.d.ts"
     }
   },
   "files": [
