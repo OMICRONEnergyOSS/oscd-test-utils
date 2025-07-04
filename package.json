@@ -7,22 +7,6 @@
     ".": {
       "default": "./dist/oscd-test-utils.js",
       "types": "./dist/oscd-test-utils.d.ts"
-    },
-    "./arbitraries.js": {
-      "default": "./dist/arbitraries.js",
-      "types": "./dist/arbitraries.d.ts"
-    },
-    "./queries.js": {
-      "default": "./dist/queries.js",
-      "types": "./dist/queries.d.ts"
-    },
-    "./waitFors.js": {
-      "default": "./dist/waitFors.js",
-      "types": "./dist/waitFors.d.ts"
-    },
-    "./utils.js": {
-      "default": "./dist/utils.js",
-      "types": "./dist/utils.d.ts"
     }
   },
   "files": [
