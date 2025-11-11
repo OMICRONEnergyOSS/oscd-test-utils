@@ -19,9 +19,9 @@ import {
   Remove,
   SetAttributes,
   SetTextContent,
-} from '@omicronenergy/oscd-api';
+} from '@openscd/oscd-api';
 
-import { isInsert } from '@omicronenergy/oscd-api/utils.js';
+import { isInsert } from '@openscd/oscd-api/utils.js';
 
 export const xmlAttributeName = /^[A-Za-z_][A-Za-z0-9-_.]*$/;
 export const xmlNamespacePrefix = /^[A-Za-z_][A-Za-z0-9-_.]*$/;

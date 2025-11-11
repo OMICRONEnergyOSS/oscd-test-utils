@@ -37,8 +37,8 @@
   "author": "OMICRON Electronics GmbH",
   "license": "Apache-2.0",
   "dependencies": {
-    "@omicronenergy/oscd-api": "^0.1.0",
     "@open-wc/testing": "4.0.0",
+    "@openscd/oscd-api": "file:../stee-re/oscd-api",
     "fast-check": "^3.22.0",
     "tslib": "^2.4.0"
   },
