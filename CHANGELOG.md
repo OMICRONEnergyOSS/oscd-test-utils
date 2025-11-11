@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.9](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.8...oscd-test-utils-v0.0.9) (2025-11-11)
+
+
+### Features
+
+* switch to openscd API module ([021c666](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/021c666ab750d1b0756ee68cb18b80a40f8b7fab))
+
 ## [0.0.8](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.7...oscd-test-utils-v0.0.8) (2025-07-04)
 
 
