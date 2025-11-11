@@ -52,7 +52,7 @@
     "@typescript-eslint/eslint-plugin": "^8.34.1",
     "@typescript-eslint/parser": "^8.34.1",
     "@web/test-runner": "0.20.2",
-    "@web/test-runner-playwright": "^0.11.1",
+    "@web/test-runner-playwright": "0.11.1",
     "concurrently": "^9.2.0",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
@@ -70,6 +70,11 @@
     "sinon": "^21.0.0",
     "typedoc": "^0.28.5",
     "typescript": "^5.8.3"
+  },
+  "overrides": {
+    "@web/test-runner-playwright": {
+      "playwright": "1.54.1"
+    }
   },
   "prettier": {
     "singleQuote": true,
