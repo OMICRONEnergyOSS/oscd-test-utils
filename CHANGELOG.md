@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.11](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.10...oscd-test-utils-v0.0.11) (2025-11-11)
+
+
+### Bug Fixes
+
+* update oscd-test-utils to include all exports ([6e4e3bd](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/6e4e3bda27c129887b66a20e655770940b0ebf15))
+
 ## [0.0.10](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.9...oscd-test-utils-v0.0.10) (2025-11-11)
 
 
