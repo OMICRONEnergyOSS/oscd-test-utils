@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.10](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.9...oscd-test-utils-v0.0.10) (2025-11-11)
+
+
+### Bug Fixes
+
+* correct @openscd/oscd-api reference ([cc7c5a1](https://github.com/OMICRONEnergyOSS/oscd-test-utils/commit/cc7c5a1aa3e708c29b340610b4330036c00e573b))
+
 ## [0.0.9](https://github.com/OMICRONEnergyOSS/oscd-test-utils/compare/oscd-test-utils-v0.0.8...oscd-test-utils-v0.0.9) (2025-11-11)
 
 
