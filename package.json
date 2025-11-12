@@ -38,7 +38,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@open-wc/testing": "4.0.0",
-    "@openscd/oscd-api": "^0.1.5",
+    "@openscd/oscd-api": "^0.1.6",
     "fast-check": "^3.22.0",
     "tslib": "^2.4.0"
   },
